@@ -2,7 +2,7 @@ import Image from "next/image";
 import Link from "next/link";
 const Navbar = () => {
   return (
-    <nav className="flex justify-between py-2 px-16 pr-28  w-full bg-white z-10">
+    <nav className="flex justify-between  px-16 pr-28  w-full bg-white z-10 ">
       <div className="relative h-24 w-52 ">
         <Image
           layout="fill"
@@ -14,7 +14,7 @@ const Navbar = () => {
 
       <ul className="items-center flex gap-8 font-semibold text-gray-800">
         <li>
-          <Link href="#">
+          <Link href="https://www.instagram.com/sublimax.mgd/" target="_blank">
             <a>Instagram</a>
           </Link>
         </li>

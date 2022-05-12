@@ -1,16 +1,16 @@
 import Image from "next/image";
-import styles from "../styles/Header.module.css";
+import styles from "../styles/Hero.module.css";
 import { useState } from "react";
-const Header = () => {
+const Hero = () => {
   const [loaded, setLoaded] = useState(false);
   return (
-    <section className="h-screen flex px-20 py-8 gap-8 overflow-hidden">
+    <section className="h-screen flex px-20 py-16 gap-8 overflow-hidden text-black bg-blue-100">
       <div
         className={`w-1/2 ${!loaded && "opacity-0"} ${
           loaded && styles["slideDown"]
         }`}
       >
-        <h1 className="font-mont font-bold text-6xl">
+        <h1 className="font-mont font-bold text-5xl">
           Las mejores tazas de tus personajes
           <br />
           <span className="text-mainBlue">Preferidos</span>
@@ -31,7 +31,7 @@ const Header = () => {
           viewBox="0 0 200 200"
           xmlns="http://www.w3.org/2000/svg"
           className="absolute top-0 left 0"
-          style={{ transform: "scale(1.9)" }}
+          style={{ transform: "scale(1.5)" }}
         >
           <path
             fill="#009AE0"
@@ -50,6 +50,7 @@ const Header = () => {
             alt="Header img"
             objectFit="contain"
             onLoad={() => setLoaded(true)}
+            priority
           />
         </div>
       </div>
@@ -57,4 +58,4 @@ const Header = () => {
   );
 };
 
-export default Header;
+export default Hero;
