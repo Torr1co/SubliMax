@@ -1,0 +1,20 @@
+.slideDown {
+  animation: slideDown 0.7s reverse ease-in;
+}
+.slideTopRight {
+  animation: slideTopRight 0.7s reverse ease-in;
+}
+
+@keyframes slideDown {
+  to {
+    transform: translateY(100px);
+    opacity: 0;
+  }
+}
+
+@keyframes slideTopRight {
+  to {
+    transform: translate(100px, -100px);
+    opacity: 0;
+  }
+}
