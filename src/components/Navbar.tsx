@@ -2,7 +2,7 @@ import Image from "next/image";
 import Link from "next/link";
 const Navbar = () => {
   return (
-    <nav className="flex justify-between  px-16 pr-28  w-full bg-white z-10 ">
+    <nav className="flex justify-between  px-16 pr-28  w-full bg-white z-10 overflow-hidden">
       <div className="relative h-24 w-52 ">
         <Image
           layout="fill"
