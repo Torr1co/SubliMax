@@ -22,7 +22,7 @@ module.exports = {
       yellow: colors.yellow,
     },
     fontFamily: {
-      mont: ["Montserrat Alternates", "sans-serif"],
+      main: ["Montserrat Alternates", "sans-serif"],
     },
     extend: {},
   },

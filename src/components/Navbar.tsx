@@ -9,6 +9,7 @@ const Navbar = () => {
           src="/logo.jpeg"
           alt="logo sublimax"
           objectFit="contain"
+          priority
         />
       </div>
 
