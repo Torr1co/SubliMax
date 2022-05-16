@@ -24,3 +24,12 @@ export const slider = [
     main: false,
   },
 ];
+
+export const cupCategories = [
+  { type: "Taza Ceramica Recta", img: "/types/taza ceramica recta.jpeg" },
+  { type: "Taza de colores por dentro", img: "/types/taza dentro azul.jpeg" },
+  { type: "Taza dorada/plateada", img: "/types/taza plateada.jpeg" },
+  { type: "Taza Mágica", img: "/types/taza magica.jpeg" },
+  { type: "Taza Polímero ", img: "/types/taza polimero recta.jpeg" },
+  { type: "Taza Polímero Cónica", img: "/types/taza polimero conica.jpeg" },
+];

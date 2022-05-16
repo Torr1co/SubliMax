@@ -7,7 +7,7 @@ const Slide = ({ bg, title, highlight, text, img, main }) => {
   console.log(bg);
   return (
     <div
-      className={`flex text-black ${bg} gap-8  px-20 py-16 w-screen h-full`}
+      className={`flex text-black ${bg} gap-8  px-28 py-16 w-screen h-full`}
       key={title}
     >
       <div
@@ -40,7 +40,7 @@ const Slide = ({ bg, title, highlight, text, img, main }) => {
           />
         </svg>
         <div
-          className={`relative w-full h-full ${
+          className={`relative rounded-lg w-full h-full overflow-hidden ${
             !loaded && main && "opacity-0"
           } ${loaded && main && styles["slideTopRight"]} `}
         >
@@ -48,9 +48,8 @@ const Slide = ({ bg, title, highlight, text, img, main }) => {
             src={img}
             layout="fill"
             alt="Header img"
-            objectFit="contain"
+            className="object-center object-cover w-full h-full"
             onLoad={() => main && setLoaded(true)}
-            priority
           />
         </div>
       </div>

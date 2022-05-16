@@ -1,6 +1,6 @@
 import { useState } from "react";
 import { IoArrowBackOutline, IoArrowForwardOutline } from "react-icons/io5";
-import { slider } from "../mockupSlider";
+import { slider } from "../data";
 import Slide from "./Slide";
 
 const Arrow = ({
