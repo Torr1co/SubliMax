@@ -1,6 +1,7 @@
 import styles from "../styles/Slider.module.css";
 import Image from "next/image";
 import { useState } from "react";
+import Link from "next/link";
 
 const Slide = ({ bg, title, highlight, text, img, main }) => {
   const [loaded, setLoaded] = useState(false);
@@ -21,9 +22,13 @@ const Slide = ({ bg, title, highlight, text, img, main }) => {
           <span className="text-mainBlue">{highlight}</span>
         </h1>
         <p className="mt-10 text-2xl pr-16 font-medium">{text}</p>
-        <button className="bg-black mt-10 text-white py-6 px-12 font-bold rounded-full font-main text-medium hover:scale-110 duration-300">
-          Explorar Mas
-        </button>
+        <Link href="/motivos">
+          <a>
+            <button className="bg-black mt-10 text-white py-6 px-12 font-bold rounded-full font-main text-medium hover:scale-110 duration-300">
+              Explorar Mas
+            </button>
+          </a>
+        </Link>
       </div>
 
       <div className="w-1/2 relative p-16 pt-0 ">
@@ -50,6 +55,7 @@ const Slide = ({ bg, title, highlight, text, img, main }) => {
             alt="Header img"
             className="object-center object-cover w-full h-full"
             onLoad={() => main && setLoaded(true)}
+            priority={main ? false : true}
           />
         </div>
       </div>

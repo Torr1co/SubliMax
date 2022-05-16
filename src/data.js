@@ -33,3 +33,54 @@ export const cupCategories = [
   { type: "Taza Polímero ", img: "/types/taza polimero recta.jpeg" },
   { type: "Taza Polímero Cónica", img: "/types/taza polimero conica.jpeg" },
 ];
+
+export const products = [
+  {
+    img: "/cups/hermione.jpeg",
+    title: "some title",
+    id: "0",
+    motivos: ["harry potter"],
+  },
+  {
+    img: "/cups/messi.jpeg",
+    title: "some title",
+    id: "1",
+    motivos: ["futbol"],
+  },
+  {
+    img: "/cups/simpson1.jpeg",
+    title: "some title",
+    id: "2",
+    motivos: ["simpson"],
+  },
+  {
+    img: "/cups/simpson2.jpeg",
+    title: "some title",
+    id: "3",
+    motivos: ["simpson"],
+  },
+  {
+    img: "/cups/lunesFrase.jpeg",
+    title: "some title",
+    id: "4",
+    motivos: ["frase"],
+  },
+  {
+    img: "/cups/messiAr.jpeg",
+    title: "some title",
+    id: "5",
+    motivos: ["futbol"],
+  },
+  {
+    img: "/cups/fraseReunion.jpeg",
+    title: "some title",
+    id: "6",
+    motivos: ["frase"],
+  },
+  {
+    img: "/cups/harry.jpeg",
+    title: "some title",
+    id: "7",
+    motivos: ["harry potter"],
+  },
+];
