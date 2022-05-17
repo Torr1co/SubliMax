@@ -1,14 +1,6 @@
 import Image from "next/image";
 import styles from "../styles/ProductList.module.css";
-type ProductListTypes = {
-  products: ProductType[];
-};
-type ProductType = {
-  id: string;
-  title: string;
-  img: string;
-  motivos: string[];
-};
+import { ProductListTypes } from "../types";
 
 const ProductList = ({ products }: ProductListTypes) => {
   return (
