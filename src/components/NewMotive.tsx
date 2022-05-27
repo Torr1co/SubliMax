@@ -13,7 +13,7 @@ const NewMotive = ({ url }: { url: string }) => {
   const [motives, setMotives] = useState<string>("");
   const [downloadURL, setDownloadURL] = useState<string>("");
   const [progress, setProgress] = useState<number>(0);
-
+  const [error, setError] = useState<string>("");
   const handleChange = (e: ChangeEvent, file: File) => {
     e.preventDefault();
     const fileName = new Date().getTime().toString();
@@ -28,7 +28,7 @@ const NewMotive = ({ url }: { url: string }) => {
         setProgress((snapshot.bytesTransferred / snapshot.totalBytes) * 100);
       },
       (error) => {
-        console.log("error: ", error);
+        setError("sucedio un error subiendo la imagen");
         // Handle unsuccessful uploads
       },
       () => {
@@ -41,14 +41,24 @@ const NewMotive = ({ url }: { url: string }) => {
 
   const handleSubmit = async (e: FormEvent) => {
     e.preventDefault();
-    console.log("fetching", url);
+    if (!downloadURL || !motives)
+      return setError("Deben estar todos los campos");
+
     await fetch(url, {
       method: "post",
       headers: {
         "Content-Type": "application/json",
       },
       body: JSON.stringify({ motives, img: downloadURL }),
-    });
+    })
+      .then(() => {
+        setError("Subido con exito");
+        setMotives("");
+        setDownloadURL("");
+      })
+      .catch((error) => {
+        setError(error);
+      });
   };
 
   return (
@@ -74,6 +84,9 @@ const NewMotive = ({ url }: { url: string }) => {
             />
           </div>
           <span> imagen subida: {progress} %</span>
+          <span className="text-red-400 underline underline-offset-2">
+            {error}
+          </span>
           <button
             className="bg-indigo-600 rounded-md cursor-pointer  py-2 px-4 text-white"
             type="submit"

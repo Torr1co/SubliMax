@@ -49,11 +49,13 @@ const Admin = ({ motives, url }: MotiveProps) => {
               placeholder="Buscar."
               onChange={(e) => setInput(e.target.value)}
             />
-            <IoSearch className="absolute top-2 right-3 text-gray-700 h-5 w-auto" />
+            <button>
+              <IoSearch className="absolute top-2 right-3 text-gray-700 h-5 w-auto" />
+            </button>
           </form>
           {filter && (
             <div
-              className="px-4 py-1 rounded-3xl text-blue-100 uppercase font-bold text-sm flex items-center cursor-pointer"
+              className="px-4 py-1 rounded-3xl text-indigo-400 uppercase font-bold text-sm flex items-center cursor-pointer border-indigo-400 border-2 "
               onClick={() => setFilter("")}
             >
               {filter}
