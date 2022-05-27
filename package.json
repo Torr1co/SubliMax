@@ -10,7 +10,11 @@
   },
   "dependencies": {
     "embla-carousel-react": "^6.2.0",
+    "firebase": "^9.8.1",
+    "mongodb": "^4.6.0",
+    "mongoose": "^6.3.4",
     "next": "12.1.6",
+    "next-connect": "^0.12.2",
     "postcss-preset-env": "^7.5.0",
     "react": "18.1.0",
     "react-animations": "^1.0.0",

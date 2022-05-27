@@ -1,26 +1,26 @@
 import Layout from "../hocs/Layout";
 import { IoClose, IoSearch } from "react-icons/io5";
 import ProductList from "../components/ProductList";
-import { mockupProducts } from "../data";
-import { FormEvent, SyntheticEvent, useState } from "react";
-import { ProductType } from "../types";
+import { FormEvent, useState } from "react";
+import { ProductType } from "../utils/types";
 
-const Motivos = () => {
+interface MotiveProps {
+  motives: ProductType[];
+}
+const Motivos = ({ motives }: MotiveProps) => {
   const [input, setInput] = useState<string>();
   const [filter, setFilter] = useState<string>();
-  const [products, setproducts] = useState<ProductType[]>(mockupProducts);
 
   const handleSubmit = (e: FormEvent) => {
     e.preventDefault();
     setFilter(input);
   };
 
-  const getProducts = () => {
-    if (!filter) return products;
+  const getMotives = () => {
+    if (!filter) return motives;
 
-    return products.filter((product) => {
-      console.log(product.motivos, filter);
-      return product.motivos.includes(filter.toLowerCase());
+    return motives.filter((product) => {
+      return product.motives.includes(filter.toLowerCase());
     });
   };
 
@@ -51,10 +51,22 @@ const Motivos = () => {
             </div>
           )}
         </div>
-        <ProductList products={getProducts()} />
+        <ProductList products={getMotives()} />
       </section>
     </Layout>
   );
 };
+
+// GET PROPS FOR SERVER SIDE RENDERING
+export async function getServerSideProps() {
+  // get motives data from API
+  const res = await fetch(process.env.API_URL as string);
+  const motives = await res.json();
+
+  // return props
+  return {
+    props: { motives },
+  };
+}
 
 export default Motivos;

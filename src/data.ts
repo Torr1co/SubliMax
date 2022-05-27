@@ -1,3 +1,5 @@
+import { ProductType, ProductListTypes } from "./utils/types";
+
 export const slider = [
   {
     bg: "bg-blue-100",
@@ -34,53 +36,45 @@ export const cupCategories = [
   { type: "Taza Polímero Cónica", img: "/types/taza polimero conica.jpeg" },
 ];
 
-export const mockupProducts = [
+/* export const mockupProducts: ProductType[] = [
   {
     img: "/cups/hermione.jpeg",
-    title: "some title",
     id: "0",
-    motivos: "harry potter",
+    motives: "harry potter",
   },
   {
     img: "/cups/messi.jpeg",
-    title: "some title",
     id: "1",
-    motivos: "futbol",
+    motives: "futbol",
   },
   {
     img: "/cups/simpson1.jpeg",
-    title: "some title",
     id: "2",
-    motivos: "simpson",
+    motives: "simpson",
   },
   {
     img: "/cups/simpson2.jpeg",
-    title: "some title",
     id: "3",
-    motivos: "simpson",
+    motives: "simpson",
   },
   {
     img: "/cups/lunesFrase.jpeg",
-    title: "some title",
     id: "4",
-    motivos: "frase",
+    motives: "frase",
   },
   {
     img: "/cups/messiAr.jpeg",
-    title: "some title",
     id: "5",
-    motivos: "futbol",
+    motives: "futbol",
   },
   {
     img: "/cups/fraseReunion.jpeg",
-    title: "some title",
     id: "6",
-    motivos: "frase",
+    motives: "frase",
   },
   {
     img: "/cups/harry.jpeg",
-    title: "some title",
     id: "7",
-    motivos: "harry potter",
+    motives: "harry potter",
   },
-];
+]; */
