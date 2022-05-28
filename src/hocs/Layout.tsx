@@ -18,10 +18,9 @@ const Layout = ({ children, title, home, admin }: LayoutProps) => {
         <title>{title}</title>
       </Head>
       <div className="bg-blue-100 bg-emerald-100 bg-yellow-100 hidden"></div>
-      {home ? null : <Navbar admin={admin}/>}
+      {home ? null : <Navbar admin={admin} />}
       {/* className={home ? "" : "pt-28"} */}
       <main className="overflow-hidden">{children}</main>
-      <Footer />
     </>
   );
 };

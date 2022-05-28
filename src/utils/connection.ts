@@ -19,7 +19,7 @@ export const connect = async () => {
 
   // OUR TODO MODEL
   const Motive =
-    mongoose.models.Motive || mongoose.model("motive", MotiveSchema);
+    mongoose.models.Motive || mongoose.model("Motive", MotiveSchema);
 
   return { conn, Motive };
 };

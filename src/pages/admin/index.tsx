@@ -1,7 +1,7 @@
 import { FormEvent, useState } from "react";
 import { IoClose, IoSearch } from "react-icons/io5";
 import Login from "../../components/Login";
-import ProductList from "../../components/ProductList";
+import AdminProductList from "../../components/AdminProductList";
 import Layout from "../../hocs/Layout";
 import { ProductType } from "../../utils/types";
 import { IoPersonCircleOutline } from "react-icons/io5";
@@ -13,10 +13,10 @@ interface MotiveProps {
 }
 
 const Admin = ({ motives, url }: MotiveProps) => {
-  console.log(url);
   const [isAdmin, setIsAdmin] = useState<boolean>(true);
   const [input, setInput] = useState<string>();
   const [filter, setFilter] = useState<string>();
+  const [motivesList, setMotivesList] = useState<ProductType[]>(motives);
 
   const handleSubmit = (e: FormEvent) => {
     e.preventDefault();
@@ -24,16 +24,16 @@ const Admin = ({ motives, url }: MotiveProps) => {
   };
 
   const getMotives = () => {
-    if (!filter) return motives;
+    if (!filter) return motivesList;
 
-    return motives.filter((product) => {
+    return motivesList.filter((product) => {
       return product.motives.includes(filter.toLowerCase());
     });
   };
 
   return isAdmin ? (
     <Layout title="Administrador" admin>
-      <NewMotive url={url} />
+      <NewMotive url={url} setMotives={setMotivesList} />
       <section className="px-16 sm:py-8  sm:px-16 lg:px-16 ">
         <h2 className="mt-6 mb-16 text-center text-3xl font-extrabold text-gray-900">
           Lista de Motivos
@@ -65,7 +65,11 @@ const Admin = ({ motives, url }: MotiveProps) => {
             </div>
           )}
         </div>
-        <ProductList products={getMotives()} admin />
+        <AdminProductList
+          products={getMotives()}
+          url={url}
+          setMotives={setMotivesList}
+        />
       </section>
     </Layout>
   ) : (
@@ -77,6 +81,7 @@ const Admin = ({ motives, url }: MotiveProps) => {
 export async function getServerSideProps() {
   // get motives data from API
   const res = await fetch(process.env.API_URL as string);
+  console.log("serverSideRes: ", res);
   const motives = await res.json();
   // return props
   return {

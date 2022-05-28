@@ -17,7 +17,7 @@ export interface ProductListTypes {
   products: ProductType[];
 }
 export interface ProductType {
-  _id: number;
+  _id?: number;
   img: string;
   motives: string;
 }
