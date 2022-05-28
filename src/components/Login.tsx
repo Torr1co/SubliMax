@@ -1,6 +1,35 @@
 import { IoPersonCircleOutline } from "react-icons/io5";
+import CryptoJs from "crypto-js";
+import { FormEvent, useState } from "react";
 
-const AdminPage = () => {
+const AdminPage = ({
+  setAdmin,
+  url,
+}: {
+  setAdmin: React.Dispatch<React.SetStateAction<boolean>>;
+  url: string;
+}) => {
+  const [username, setUsername] = useState<string>("");
+  const [password, setPassword] = useState<string>("");
+  const [error, setError] = useState<string>("");
+  const [loading, setLoading] = useState<boolean>(false);
+
+  const handleSubmit = async (e: FormEvent) => {
+    e.preventDefault();
+    setLoading(true);
+    const res = await fetch(url, {
+      method: "post",
+      headers: {
+        "Content-Type": "application/json",
+      },
+      body: JSON.stringify({ username, password }),
+    });
+
+    setLoading(false);
+
+    if (res.status !== 200) return setError(await res.json());
+    setAdmin(true);
+  };
   return (
     <div className="min-h-screen flex items-center justify-center py-12 px-4 sm:px-6 lg:px-8">
       <div className="max-w-md w-full space-y-8">
@@ -10,7 +39,7 @@ const AdminPage = () => {
             Verifica que eres administrador
           </h2>
         </div>
-        <form className="mt-8 space-y-6" action="#" method="POST">
+        <form className="mt-8 space-y-6" action="#" onSubmit={handleSubmit}>
           <input type="hidden" name="remember" value="true" />
           <div className="rounded-md shadow-sm -space-y-px">
             <div>
@@ -25,6 +54,8 @@ const AdminPage = () => {
                 required
                 className="appearance-none rounded-none relative block w-full px-3 py-2 border border-gray-300 placeholder-gray-500 text-gray-900 rounded-t-md focus:outline-none focus:ring-indigo-500 focus:border-indigo-500 focus:z-10 sm:text-sm"
                 placeholder="Usuario"
+                onChange={(e) => setUsername(e.target.value)}
+                value={username}
               />
             </div>
             <div>
@@ -34,17 +65,21 @@ const AdminPage = () => {
               <input
                 id="contraseña"
                 name="contraseña"
-                type="contraseña"
+                type="password"
                 autoComplete="current-contraseña"
                 required
                 className="appearance-none rounded-none relative block w-full px-3 py-2 border border-gray-300 placeholder-gray-500 text-gray-900 rounded-b-md focus:outline-none focus:ring-indigo-500 focus:border-indigo-500 focus:z-10 sm:text-sm"
                 placeholder="Contraseña"
+                onChange={(e) => setPassword(e.target.value)}
+                value={password}
               />
             </div>
           </div>
 
           <div className="flex items-center justify-between"></div>
-
+          <span className="text-red-500 underline underline-offset-2 text-sm">
+            {error}
+          </span>
           <div>
             <button
               type="submit"
@@ -65,7 +100,7 @@ const AdminPage = () => {
                   />
                 </svg>
               </span>
-              Ingresar
+              {loading ? "Cargando..." : "Ingresar"}
             </button>
           </div>
         </form>

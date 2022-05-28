@@ -51,21 +51,18 @@ const NewMotive = ({
     if (!downloadURL)
       return setError("No hay imagen o se ha quitado, vuelve a subirla");
     if (!motives) return setError("deben haber motivos");
-    const newMotive: ProductType = { motives, img: downloadURL };
     const response = await fetch(url, {
       method: "post",
       headers: {
         "Content-Type": "application/json",
       },
-      body: JSON.stringify(newMotive),
+      body: JSON.stringify({ motives, img: downloadURL }),
     });
 
     if (response.status !== 200) return setError("error al agregar taza");
-
-    setError("Subido con exito");
-    setMotivesString("");
-    setDownloadURL("");
-    setMotives((motives) => [...motives, newMotive]);
+    response
+      .json()
+      .then((newMotive) => setMotives((motives) => [...motives, newMotive]));
   };
 
   return (

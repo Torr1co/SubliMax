@@ -9,11 +9,12 @@ import NewMotive from "../../components/NewMotive";
 
 interface MotiveProps {
   motives: ProductType[];
-  url: string;
+  motivesURL: string;
+  usersURL: string;
 }
 
-const Admin = ({ motives, url }: MotiveProps) => {
-  const [isAdmin, setIsAdmin] = useState<boolean>(true);
+const Admin = ({ motives, motivesURL, usersURL }: MotiveProps) => {
+  const [isAdmin, setAdmin] = useState<boolean>(false);
   const [input, setInput] = useState<string>();
   const [filter, setFilter] = useState<string>();
   const [motivesList, setMotivesList] = useState<ProductType[]>(motives);
@@ -33,7 +34,7 @@ const Admin = ({ motives, url }: MotiveProps) => {
 
   return isAdmin ? (
     <Layout title="Administrador" admin>
-      <NewMotive url={url} setMotives={setMotivesList} />
+      <NewMotive url={motivesURL} setMotives={setMotivesList} />
       <section className="px-16 sm:py-8  sm:px-16 lg:px-16 ">
         <h2 className="mt-6 mb-16 text-center text-3xl font-extrabold text-gray-900">
           Lista de Motivos
@@ -67,25 +68,29 @@ const Admin = ({ motives, url }: MotiveProps) => {
         </div>
         <AdminProductList
           products={getMotives()}
-          url={url}
+          url={motivesURL}
           setMotives={setMotivesList}
         />
       </section>
     </Layout>
   ) : (
-    <Login />
+    <Login setAdmin={setAdmin} url={usersURL} />
   );
 };
 
 // GET PROPS FOR SERVER SIDE RENDERING
 export async function getServerSideProps() {
   // get motives data from API
-  const res = await fetch(process.env.API_URL as string);
+  const res = await fetch(process.env.MOTIVES_URL as string);
   console.log("serverSideRes: ", res);
   const motives = await res.json();
   // return props
   return {
-    props: { motives, url: process.env.API_URL },
+    props: {
+      motives,
+      motivesURL: process.env.MOTIVES_URL,
+      usersURL: process.env.USERS_URL,
+    },
   };
 }
 export default Admin;

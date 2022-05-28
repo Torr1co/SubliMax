@@ -13,7 +13,6 @@ const ProductList = ({
   url: string;
   setMotives: React.Dispatch<React.SetStateAction<ProductType[]>>;
 }) => {
-  console.log(products);
   const [error, setError] = useState<number>(0);
   const handleDelete = async (id: number) => {
     const res = await fetch(url + "/" + id, {
