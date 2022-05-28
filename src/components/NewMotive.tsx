@@ -48,6 +48,7 @@ const NewMotive = ({
 
   const handleSubmit = async (e: FormEvent) => {
     e.preventDefault();
+    setError("");
     if (!downloadURL)
       return setError("No hay imagen o se ha quitado, vuelve a subirla");
     if (!motives) return setError("deben haber motivos");
@@ -60,9 +61,11 @@ const NewMotive = ({
     });
 
     if (response.status !== 200) return setError("error al agregar taza");
+
     response
       .json()
       .then((newMotive) => setMotives((motives) => [...motives, newMotive]));
+    setError("motivo agregado con exito");
   };
 
   return (

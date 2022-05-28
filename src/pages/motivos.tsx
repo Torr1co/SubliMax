@@ -60,7 +60,7 @@ const Motivos = ({ motives }: MotiveProps) => {
 // GET PROPS FOR SERVER SIDE RENDERING
 export async function getServerSideProps() {
   // get motives data from API
-  const res = await fetch(process.env.API_URL as string);
+  const res = await fetch(process.env.MOTIVES_URL as string);
   const motives = await res.json();
 
   // return props

@@ -5,7 +5,7 @@ export const slider = [
     bg: "bg-blue-100",
     title: "Las mejores tazas de tus personajes",
     highlight: " Preferidos",
-    text: "Desde los Simpson hasta Dragon Ball, el mejor regalo para un amigo y pronto vendran personalizadas!",
+    text: "Somos tu mejor alternativa para sorprender con los mejores detalles. Tenemos infinidad de diseños y tambien podemos personalizarlas!",
     img: "/headers/harry.jpeg",
     main: true,
   },
@@ -35,46 +35,3 @@ export const cupCategories = [
   { type: "Taza Polímero ", img: "/types/taza polimero recta.jpeg" },
   { type: "Taza Polímero Cónica", img: "/types/taza polimero conica.jpeg" },
 ];
-
-/* export const mockupProducts: ProductType[] = [
-  {
-    img: "/cups/hermione.jpeg",
-    id: "0",
-    motives: "harry potter",
-  },
-  {
-    img: "/cups/messi.jpeg",
-    id: "1",
-    motives: "futbol",
-  },
-  {
-    img: "/cups/simpson1.jpeg",
-    id: "2",
-    motives: "simpson",
-  },
-  {
-    img: "/cups/simpson2.jpeg",
-    id: "3",
-    motives: "simpson",
-  },
-  {
-    img: "/cups/lunesFrase.jpeg",
-    id: "4",
-    motives: "frase",
-  },
-  {
-    img: "/cups/messiAr.jpeg",
-    id: "5",
-    motives: "futbol",
-  },
-  {
-    img: "/cups/fraseReunion.jpeg",
-    id: "6",
-    motives: "frase",
-  },
-  {
-    img: "/cups/harry.jpeg",
-    id: "7",
-    motives: "harry potter",
-  },
-]; */
